@@ -1,2 +1,5 @@
-# real-debrid-api-postman
-Postman collection for Real-Debrid API
+# Postman collection of Real-Debrid API
+
+https://api.real-debrid.com/
+
+Updated as of 05.10.2024
