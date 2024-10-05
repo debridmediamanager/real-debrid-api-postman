@@ -1,0 +1,1114 @@
+{
+  "info": {
+    "name": "Real-Debrid API",
+    "_postman_id": "c9a2f790-1234-5678-9012-abcdef123456",
+    "description": "API documentation for Real-Debrid services.",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "user",
+      "description": "",
+      "item": [
+        {
+          "name": "Get current user info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/user",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user"
+              ]
+            },
+            "description": "Retrieve information about the current authenticated user."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "unrestrict",
+      "description": "",
+      "item": [
+        {
+          "name": "Check if a link is downloadable",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"link\": \"\",\n  \"password\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/unrestrict/check",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "unrestrict",
+                "check"
+              ]
+            },
+            "description": "Check if a file is downloadable on the concerned hoster. This request does not require authentication."
+          },
+          "response": []
+        },
+        {
+          "name": "Unrestrict a hoster link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"link\": \"\",\n  \"password\": \"\",\n  \"remote\": 0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/unrestrict/link",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "unrestrict",
+                "link"
+              ]
+            },
+            "description": "Unrestrict a hoster link and get a new unrestricted link."
+          },
+          "response": []
+        },
+        {
+          "name": "Unrestrict a folder link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"link\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/unrestrict/folder",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "unrestrict",
+                "folder"
+              ]
+            },
+            "description": "Unrestrict a hoster folder link and get individual links. Returns an empty array if no links found."
+          },
+          "response": []
+        },
+        {
+          "name": "Decrypt container file",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/unrestrict/containerFile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "unrestrict",
+                "containerFile"
+              ]
+            },
+            "description": "Decrypt a container file (RSDF, CCF, CCF3, DLC)."
+          },
+          "response": []
+        },
+        {
+          "name": "Decrypt container file from link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"link\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/unrestrict/containerLink",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "unrestrict",
+                "containerLink"
+              ]
+            },
+            "description": "Decrypt a container file from a link."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "traffic",
+      "description": "",
+      "item": [
+        {
+          "name": "Get traffic information for limited hosters",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/traffic",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "traffic"
+              ]
+            },
+            "description": "Get traffic information for limited hosters (limits, current usage, extra packages)."
+          },
+          "response": []
+        },
+        {
+          "name": "Get traffic details on used hosters",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/traffic/details?start={{start}}&end={{end}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "traffic",
+                "details"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "{{start}}",
+                  "description": "Start period (`YYYY-MM-DD`), default a week ago"
+                },
+                {
+                  "key": "end",
+                  "value": "{{end}}",
+                  "description": "End period (`YYYY-MM-DD`), default today"
+                }
+              ]
+            },
+            "description": "Get traffic details on each hoster used during a defined period."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "streaming",
+      "description": "",
+      "item": [
+        {
+          "name": "Get transcoding links for a given file",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/streaming/transcode/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "streaming",
+                "transcode",
+                "{{id}}"
+              ]
+            },
+            "description": "Get transcoding links for the given file ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Get media information for a given file",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/streaming/mediaInfos/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "streaming",
+                "mediaInfos",
+                "{{id}}"
+              ]
+            },
+            "description": "Get detailed media information for the given file ID."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "downloads",
+      "description": "",
+      "item": [
+        {
+          "name": "Get user downloads list",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/downloads?offset={{offset}}&page={{page}}&limit={{limit}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "downloads"
+              ],
+              "query": [
+                {
+                  "key": "offset",
+                  "value": "{{offset}}",
+                  "description": "Starting offset (must be within 0 and X-Total-Count HTTP header)."
+                },
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Pagination system."
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "description": "Entries returned per page/request (must be within 0 and 5000, default 100)."
+                }
+              ]
+            },
+            "description": "Get the user's downloads list."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a link from downloads list",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/downloads/delete/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "downloads",
+                "delete",
+                "{{id}}"
+              ]
+            },
+            "description": "Delete a link from the downloads list. Returns a 204 HTTP code."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "torrents",
+      "description": "",
+      "item": [
+        {
+          "name": "Get user torrents list",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/torrents?offset={{offset}}&page={{page}}&limit={{limit}}&filter={{filter}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents"
+              ],
+              "query": [
+                {
+                  "key": "offset",
+                  "value": "{{offset}}",
+                  "description": "Starting offset (must be within 0 and X-Total-Count HTTP header)."
+                },
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Pagination system."
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "description": "Entries returned per page/request (must be within 0 and 5000, default 100)."
+                },
+                {
+                  "key": "filter",
+                  "value": "{{filter}}",
+                  "description": "Use \"active\" to list active torrents only."
+                }
+              ]
+            },
+            "description": "Get the user's torrents list."
+          },
+          "response": []
+        },
+        {
+          "name": "Get info on a torrent",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/torrents/info/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "info",
+                "{{id}}"
+              ]
+            },
+            "description": "Get all information on the specified torrent."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a torrent from torrents list",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/torrents/delete/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "delete",
+                "{{id}}"
+              ]
+            },
+            "description": "Delete a torrent from the torrents list. Returns a 204 HTTP code."
+          },
+          "response": []
+        },
+        {
+          "name": "Select files of a torrent",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "files",
+                  "value": "",
+                  "description": "Selected files IDs (comma separated) or \"all\".",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/torrents/selectFiles/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "selectFiles",
+                "{{id}}"
+              ]
+            },
+            "description": "Select files of a torrent to start it. Returns a 204 HTTP code."
+          },
+          "response": []
+        },
+        {
+          "name": "Get list of instantly available file IDs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/torrents/instantAvailability/{{hash}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "instantAvailability",
+                "{{hash}}"
+              ]
+            },
+            "description": "Get list of instantly available file IDs by hoster."
+          },
+          "response": []
+        },
+        {
+          "name": "Get currently active torrents number",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/torrents/activeCount",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "activeCount"
+              ]
+            },
+            "description": "Get the number of currently active torrents and the current maximum limit."
+          },
+          "response": []
+        },
+        {
+          "name": "Get available hosts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/torrents/availableHosts",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "availableHosts"
+              ]
+            },
+            "description": "Get available hosts to upload the torrent to."
+          },
+          "response": []
+        },
+        {
+          "name": "Add torrent file",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                },
+                {
+                  "key": "host",
+                  "value": "",
+                  "type": "text",
+                  "description": "Hoster domain (retrieved from `/torrents/availableHosts`)."
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/torrents/addTorrent",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "addTorrent"
+              ]
+            },
+            "description": "Add a torrent file to download. Returns a 201 HTTP code."
+          },
+          "response": []
+        },
+        {
+          "name": "Add magnet link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"magnet\": \"\",\n  \"host\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/torrents/addMagnet",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "torrents",
+                "addMagnet"
+              ]
+            },
+            "description": "Add a magnet link to download. Returns a 201 HTTP code."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "hosts",
+      "description": "",
+      "item": [
+        {
+          "name": "Get supported hosts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/hosts",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "hosts"
+              ]
+            },
+            "description": "Get supported hosts. This request does not require authentication."
+          },
+          "response": []
+        },
+        {
+          "name": "Get status of hosters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/hosts/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "hosts",
+                "status"
+              ]
+            },
+            "description": "Get status of supported hosters and their status on competitors."
+          },
+          "response": []
+        },
+        {
+          "name": "Get all supported regex patterns",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/hosts/regex",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "hosts",
+                "regex"
+              ]
+            },
+            "description": "Get all supported link regular expressions."
+          },
+          "response": []
+        },
+        {
+          "name": "Get all supported regex for folder links",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/hosts/regexFolder",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "hosts",
+                "regexFolder"
+              ]
+            },
+            "description": "Get all supported folder regular expressions."
+          },
+          "response": []
+        },
+        {
+          "name": "Get all supported domains",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/hosts/domains",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "hosts",
+                "domains"
+              ]
+            },
+            "description": "Get all hoster domains supported on the service."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "description": "",
+      "item": [
+        {
+          "name": "Get current user settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/settings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "settings"
+              ]
+            },
+            "description": "Get current user settings with possible values to update."
+          },
+          "response": []
+        },
+        {
+          "name": "Update a user setting",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "setting_name",
+                  "value": "",
+                  "description": "Name of the setting to update.",
+                  "type": "text"
+                },
+                {
+                  "key": "setting_value",
+                  "value": "",
+                  "description": "New value for the setting.",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/settings/update",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "settings",
+                "update"
+              ]
+            },
+            "description": "Update a user setting. Returns a 204 HTTP code."
+          },
+          "response": []
+        },
+        {
+          "name": "Convert fidelity points",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/settings/convertPoints",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "settings",
+                "convertPoints"
+              ]
+            },
+            "description": "Convert fidelity points. Returns a 204 HTTP code."
+          },
+          "response": []
+        },
+        {
+          "name": "Send verification email to change the password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/settings/changePassword",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "settings",
+                "changePassword"
+              ]
+            },
+            "description": "Send the verification email to change the password."
+          },
+          "response": []
+        },
+        {
+          "name": "Upload avatar image",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/settings/avatarFile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "settings",
+                "avatarFile"
+              ]
+            },
+            "description": "Upload a new user avatar image. Returns a 204 HTTP code."
+          },
+          "response": []
+        },
+        {
+          "name": "Reset user avatar",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/settings/avatarDelete",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "settings",
+                "avatarDelete"
+              ]
+            },
+            "description": "Reset user avatar image to default. Returns a 204 HTTP code."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "misc",
+      "description": "",
+      "item": [
+        {
+          "name": "Disable current access token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/disable_access_token",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "disable_access_token"
+              ]
+            },
+            "description": "Disable the current access token, effectively logging out the user."
+          },
+          "response": []
+        },
+        {
+          "name": "Get server time",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/time",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "time"
+              ]
+            },
+            "description": "Get server time in `Y-m-d H:i:s` format."
+          },
+          "response": []
+        },
+        {
+          "name": "Get server time in ISO format",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/time/iso",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "time",
+                "iso"
+              ]
+            },
+            "description": "Get server time in ISO format (`Y-m-d\\TH:i:sO`)."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.real-debrid.com/rest/1.0",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "start",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "end",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "offset",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "page",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "limit",
+      "value": "100",
+      "type": "string"
+    },
+    {
+      "key": "filter",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "hash",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
